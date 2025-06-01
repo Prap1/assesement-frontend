@@ -180,9 +180,10 @@ const PaymentForm = ({ product, amount, clientSecret }) => {
         if (order.status === 'completed') {
           navigate('/payment-success', {
             state: {
-              orderId: paymentIntent.id,
+              orderId: order._id, // <-- FIXED
               amount: amount,
-              product: product
+              product: product,
+              paymentIntentId: paymentIntent.id, // <-- FIXED
             }
           });
         } else {
